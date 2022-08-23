@@ -84,7 +84,7 @@ alt_opts="${alt_opts},zoned.max_open=${altzns_max_open},zoned.max_active=${altzn
 U20_IMG="${HOME}/src/storage/images/ubuntu-20.04.qcow2"
 
 sudo $QEMU_HOME/build/qemu-system-x86_64 -name f2fs-vm -m 4G -smp 4 -enable-kvm -nographic \
-	-hda $U20_IMG \
+    -hda $U20_IMG \
     -kernel $HOME/src/storage/f2fs/arch/x86/boot/bzImage \
     -append "root=/dev/sdb2 rootfstype=ext4 console=ttyS0" \
     -net nic,model=virtio -net user -device virtio-tablet-pci,id=tablet0,serial=virtio-tablet \
