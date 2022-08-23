@@ -81,6 +81,8 @@ alt_opts="${alt_opts},zoned.max_open=${altzns_max_open},zoned.max_active=${altzn
 # -S: Do not start CPU at startup (you must type 'c' in the monitor). From gdb
 # -s: Shorthand for -gdb tcp::1234, i.e. open a gdbserver on TCP port 1234
 
+# An installed Ubuntu server image ensure disk is not configured as a logical volume
+# otherwise it has boot issues (can disable Logical Volume during the image install)
 U20_IMG="${HOME}/src/storage/images/ubuntu-20.04.qcow2"
 
 sudo $QEMU_HOME/build/qemu-system-x86_64 -name f2fs-vm -m 4G -smp 4 -enable-kvm -nographic \
