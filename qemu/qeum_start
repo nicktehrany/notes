@@ -2,10 +2,12 @@
 
 set -e
 
-#############################################
-############### Setup Devices ###############
-#### With Krien/ZNS_personal_Qemu_config ####
-#############################################
+##############################################
+############### Setup Devices ################
+#### With Krien/ZNS_personal_Qemu_config #####
+### Generate devices with his script + add ###
+#### additional devices I manually added #####
+##############################################
 
 DEVICE_PATH="devices/"
 
