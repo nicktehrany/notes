@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+#############################################
+################# Start qemu ################
+#############################################
+# -S: Do not start CPU at startup (you must type 'c' in the monitor). From gdb
+# -s: Shorthand for -gdb tcp::1234, i.e. open a gdbserver on TCP port 1234
+
+U20_IMG="/mnt/sdb/nty/images/ubuntu-22.04-f2fs.qcow2"
+# U20_IMG="/mnt/sdb/nty/images/ubuntu-22.04.qcow2"
+
+sudo ${HOME}/src/qemu-6.1.0/build/qemu-system-x86_64 -name f2fs-vm -m 20G -cpu host -smp 10 -enable-kvm -nographic \
+    -hda $U20_IMG \
+    -net nic,model=virtio -net user,hostfwd=tcp::8888-:22,hostfwd=tcp::3333-:3000 -device virtio-tablet-pci,id=tablet0,serial=virtio-tablet \
+    -device vfio-pci,host=0000:b0:00.0 \
+    # -kernel /mnt/sdb/nty/src/f2fs/arch/x86/boot/bzImage \
+    # -append "root=/dev/sdb2 rootfstype=ext4 console=ttyS0" \
+    # -S -s \
